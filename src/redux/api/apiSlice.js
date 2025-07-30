@@ -7,6 +7,7 @@ export const apiSlice = createApi({
     prepareHeaders: (headers) => {
       // Add API key to all requests
       headers.set('x-api-key', process.env.NEXT_PUBLIC_API_KEY);
+      headers.set('Content-Type', 'application/json');
       
       // Add admin email for admin routes
       if (typeof window !== 'undefined') {
@@ -32,11 +33,44 @@ export const apiSlice = createApi({
       return headers;
     },
   }),
-  endpoints: () => ({}),
+  endpoints: (builder) => ({
+    // Filter endpoints
+    getFilterOptions: builder.query({
+      query: (endpoint) => ({
+        url: endpoint,
+        method: 'GET'
+      }),
+      providesTags: (result = [], error, endpoint) => {
+        const tagMap = {
+          '/category/': 'Category',
+          '/color/': 'Color',
+          '/content/': 'Content',
+          '/design/': 'Design',
+          '/structure/': 'Structure',
+          '/substructure/': 'Structure',
+          '/finish/': 'Finish',
+          '/subfinish/': 'Finish',
+          '/groupcode/': 'GroupCode',
+          '/vendor/': 'Vendor',
+          '/suitablefor/': 'SuitableFor',
+          '/subsuitable/': 'SuitableFor',
+          '/motifsize/': 'MotifSize',
+        };
+        
+        const tagType = tagMap[endpoint] || 'Filter';
+        return [{ type: tagType, id: endpoint }];
+      }
+    }),
+    // ... other endpoints
+  }),
   tagTypes: [
     "Products", "Coupon", "Product", "RelatedProducts", "UserOrder", "UserOrders",
     "ProductType", "OfferProducts", "PopularProducts", "TopRatedProducts", "NewProducts",
     "Structure", "Content", "Finish", "Design", "Color", "MotifSize", "SuitableFor",
-    "Vendor", "PopularNewProducts", "OfferNewProducts", "TopRatedNewProducts"
+    "Vendor", "PopularNewProducts", "OfferNewProducts", "TopRatedNewProducts",
+    "Category", "GroupCode", "Filter"
   ]
 });
+
+// Export hooks for usage in components
+export const { useGetFilterOptionsQuery } = apiSlice;

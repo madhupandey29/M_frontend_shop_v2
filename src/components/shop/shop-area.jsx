@@ -37,10 +37,10 @@ const ShopArea = ({ shop_right = false, hidden_sidebar = false }) => {
   const gsmQuery = useGetGsmUptoQuery(gsm, { skip: !gsm });
   const ozQuery = useGetOzUptoQuery(oz, { skip: !oz });
   const quantityQuery = useGetQuantityUptoQuery(quantity, { skip: !quantity });
-  const purchasePriceQuery = useGetPurchasePriceUptoQuery(purchasePrice);
-  const priceQuery = useGetPriceUptoQuery(minPrice);
-  const allProductsQuery = useGetAllNewProductsQuery();
-
+ const purchasePriceQuery = useGetPurchasePriceUptoQuery(purchasePrice, { skip: !purchasePrice });
+  const priceQuery = useGetPriceUptoQuery(minPrice, {skip: !(minPrice && maxPrice && minPrice === maxPrice),});
+  const allProductsQuery = useGetAllNewProductsQuery(undefined, {
+  skip: gsm || oz || quantity || purchasePrice || (minPrice && maxPrice && minPrice === maxPrice), });
   // Decide which API result to use (priority order)
   let products = null;
   let isLoading = false;
