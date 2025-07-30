@@ -28,27 +28,40 @@ const ProductItem = ({ product }) => {
     dispatch(handleProductModal(prd));
   };
 
+  // Check if the URL is from Cloudinary
+  const isCloudinaryUrl = (url) => {
+    return url && (url.includes('res.cloudinary.com') || url.startsWith('https://'));
+  };
+
   // Get the first available image URL
   const getImageUrl = () => {
-    // Check if the backend already returns full URLs
-    if (product.image && product.image.startsWith('http')) {
+    // If it's already a full URL (Cloudinary or other external source), return as is
+    if (isCloudinaryUrl(product.image)) {
       return product.image;
     }
-    // If not, construct the URL
-    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+    
+    // For local development or non-Cloudinary URLs
+    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || '';
+    
+    // Clean up the base URL and image path to prevent double slashes
+    const cleanBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+    const cleanImagePath = (path) => path ? path.replace(/^\/+/, '') : '';
+    
     if (product.image) {
-      return `${baseUrl}/uploads/${product.image}`;
+      return `${cleanBaseUrl}/uploads/${cleanImagePath(product.image)}`;
     }
     if (product.image1) {
-      return `${baseUrl}/uploads/${product.image1}`;
+      return `${cleanBaseUrl}/uploads/${cleanImagePath(product.image1)}`;
     }
     if (product.image2) {
-      return `${baseUrl}/uploads/${product.image2}`;
+      return `${cleanBaseUrl}/uploads/${cleanImagePath(product.image2)}`;
     }
+    
     return '/assets/img/product/default-product-img.jpg';
   };
+  
   const imageUrl = getImageUrl();
-
+  const isCloudinary = isCloudinaryUrl(imageUrl);
   const slug = product.slug || product._id;
 
   return (
@@ -62,7 +75,11 @@ const ProductItem = ({ product }) => {
               fill
               style={{ objectFit: 'contain' }}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 282px"
+              unoptimized={isCloudinary} // Disable Next.js optimization for Cloudinary images
+              priority={false}
+              loading="lazy"
               onError={(e) => {
+                e.target.onerror = null; // Prevent infinite loop
                 e.target.src = '/assets/img/product/default-product-img.jpg';
               }}
             />

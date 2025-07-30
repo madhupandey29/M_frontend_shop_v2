@@ -41,17 +41,25 @@ const ShopListItem = ({ product }) => {
     dispatch(add_to_compare(prd));
   };
 
+  // Check if URL is from Cloudinary
+  const isCloudinaryUrl = (url) => {
+    return url && (url.includes('res.cloudinary.com') || url.startsWith('https://'));
+  };
+
   // Get the image URL
   const getImageUrl = (image) => {
     if (!image) {
       return '/assets/img/product/default-product-img.jpg';
     }
     try {
-      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || '';
+      const cleanBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+      
       // If image is a stringified object, return default
       if (typeof image === 'string' && image.startsWith('[object Object]')) {
         return '/assets/img/product/default-product-img.jpg';
       }
+      
       // If image is an object
       if (typeof image === 'object' && image !== null) {
         // If it has a url property
@@ -60,30 +68,37 @@ const ShopListItem = ({ product }) => {
         }
         // If it has a filename or path property
         if (image.filename) {
-          return `${baseUrl}/uploads/${image.filename}`;
+          const cleanPath = image.filename.replace(/^\/+/, '');
+          return `${cleanBaseUrl}/uploads/${cleanPath}`;
         }
         if (image.path) {
           const cleanPath = image.path.replace(/^\/+/, '');
-          return `${baseUrl}/uploads/${cleanPath}`;
+          return `${cleanBaseUrl}/uploads/${cleanPath}`;
         }
         return '/assets/img/product/default-product-img.jpg';
       }
-      // If image starts with http or https, use it as is
-      if (typeof image === 'string' && (image.startsWith('http://') || image.startsWith('https://'))) {
+      
+      // If image is already a full URL (Cloudinary or other)
+      if (typeof image === 'string' && isCloudinaryUrl(image)) {
         return image;
       }
+      
       // For string paths, construct the URL
       if (typeof image === 'string') {
         const cleanImagePath = image.replace(/^\/+/, '');
-        return `${baseUrl}/uploads/${cleanImagePath}`;
+        return `${cleanBaseUrl}/uploads/${cleanImagePath}`;
       }
+      
       return '/assets/img/product/default-product-img.jpg';
     } catch (error) {
+      console.error('Error processing image URL:', error);
       return '/assets/img/product/default-product-img.jpg';
     }
   };
+  
   // Get the final image URL (try both img and image props)
   const imageUrl = getImageUrl(img || image);
+  const isCloudinary = isCloudinaryUrl(imageUrl);
   const slug = product.slug || product._id;
 
   return (
@@ -98,7 +113,10 @@ const ShopListItem = ({ product }) => {
               height={310}
               style={{ color: 'transparent' }}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 350px"
+              unoptimized={isCloudinary}
+              loading="lazy"
               onError={(e) => {
+                e.target.onerror = null; // Prevent infinite loop
                 e.target.src = '/assets/img/product/default-product-img.jpg';
               }}
             />

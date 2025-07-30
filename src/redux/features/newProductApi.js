@@ -7,96 +7,100 @@ export const newProductApi = apiSlice.injectEndpoints({
       query: () => "/product/",
     }),
     getSingleNewProduct: builder.query({
-      query: (slug) => `/newproduct/slug/${slug}`,
+      query: (slug) => `/product/slug/${slug}`,
     }),
     addNewProduct: builder.mutation({
       query: (data) => ({
-        url: "/newproduct/add",
+        url: "/product/",
         method: "POST",
         body: data,
       }),
     }),
     updateNewProduct: builder.mutation({
       query: ({ id, ...data }) => ({
-        url: `/newproduct/update/${id}`,
+        url: `/product/${id}`,
         method: "PUT",
         body: data,
       }),
     }),
     deleteNewProduct: builder.mutation({
       query: (id) => ({
-        url: `/newproduct/delete/${id}`,
+        url: `/product/${id}`,
         method: "DELETE",
       }),
     }),
     searchNewProduct: builder.query({
-      query: (q) => `/newproduct/search/${q}`,
+      query: (q) => `/product/search/${q}`,
     }),
     getGroupCodeProducts: builder.query({
-      query: (groupcodeId) => `/newproduct/groupcode/${groupcodeId}`,
+      query: (groupcodeId) => `/product/groupcode/${groupcodeId}`,
     }),
     getCategoryProducts: builder.query({
-      query: (id) => `/newproduct/category/${id}`,
+      query: (id) => `/product/category/${id}`,
     }),
     getStructureProducts: builder.query({
-      query: (id) => `/newproduct/structure/${id}`,
+      query: (id) => `/product/structure/${id}`,
     }),
     getContentProducts: builder.query({
-      query: (id) => `/newproduct/content/${id}`,
+      query: (id) => `/product/content/${id}`,
     }),
     getFinishProducts: builder.query({
-      query: (id) => `/newproduct/finish/${id}`,
+      query: (id) => `/product/finish/${id}`,
     }),
     getDesignProducts: builder.query({
-      query: (id) => `/newproduct/design/${id}`,
+      query: (id) => `/product/design/${id}`,
     }),
     getColorProducts: builder.query({
-      query: (id) => `/newproduct/color/${id}`,
+      query: (id) => `/product/color/${id}`,
     }),
     getMotifProducts: builder.query({
-      query: (id) => `/newproduct/motif/${id}`,
+      query: (id) => `/product/motif/${id}`,
+    }),
+    // Get SEO by Product ID
+    getSeoByProduct: builder.query({
+      query: (productId) => `/seo/product/${productId}`,
     }),
     getSuitableProducts: builder.query({
-      query: (id) => `/newproduct/suitable/${id}`,
+      query: (id) => `/product/suitable/${id}`,
     }),
     getVendorProducts: builder.query({
-      query: (id) => `/newproduct/vendor/${id}`,
+      query: (id) => `/product/vendor/${id}`,
     }),
     getIdentifierProducts: builder.query({
-      query: (identifier) => `/newproduct/identifier/${identifier}`,
+      query: (identifier) => `/product/identifier/${identifier}`,
     }),
     getGsmUpto: builder.query({
-      query: (value) => `/newproduct/gsm/upto/${value}`,
+      query: (value) => `/product/gsm/${value}`,
     }),
     getOzUpto: builder.query({
-      query: (value) => `/newproduct/oz/upto/${value}`,
+      query: (value) => `/product/oz/${value}`,
     }),
     getInchUpto: builder.query({
-      query: (value) => `/newproduct/inch/upto/${value}`,
+      query: (value) => `/product/inch/${value}`,
     }),
     getCmUpto: builder.query({
-      query: (value) => `/newproduct/cm/upto/${value}`,
+      query: (value) => `/product/cm/${value}`,
     }),
     getPriceUpto: builder.query({
-      query: (value) => `/newproduct/price/upto/${value}`,
+      query: (value) => `/product/price/${value}`,
     }),
     getQuantityUpto: builder.query({
-      query: (value) => `/newproduct/quantity/upto/${value}`,
+      query: (value) => `/product/quantity/${value}`,
     }),
     getPurchasePriceUpto: builder.query({
-      query: (value) => `/newproduct/purchaseprice/upto/${value}`,
+      query: (value) => `/product/purchaseprice/${value}`,
     }),
     getGroupCodeById: builder.query({
       query: (id) => `/groupcode/view/${id}`,
     }),
     getPopularNewProducts: builder.query({
-      query: () => "/newproduct/popular",
+      query: () => "/product/popular",
     }),
     getOffers: builder.query({
-      query: () => "/newproduct/offers",
+      query: () => "/product/offers",
     }),
     getTopRated: builder.query({
-      query: () => "/newproduct/toprated",
+      query: () => "/product/toprated",
     }),
   }),
 });

@@ -1,7 +1,22 @@
 'use client';
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { CgPlayButtonO } from "react-icons/cg";
+
+// Helper function to check if URL is from Cloudinary
+const isCloudinaryUrl = (url) => {
+  return url && (url.includes('res.cloudinary.com') || url.startsWith('https://'));
+};
+
+// Helper function to process image URLs
+const processImageUrl = (url) => {
+  if (!url) return '';
+  if (isCloudinaryUrl(url)) return url;
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || '';
+  const cleanBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+  const cleanPath = url.startsWith('/') ? url.slice(1) : url;
+  return `${cleanBaseUrl}/uploads/${cleanPath}`;
+};
 
 const DetailsThumbWrapper = ({
   imageURLs,
@@ -13,13 +28,25 @@ const DetailsThumbWrapper = ({
   status
 }) => {
   const [isVideoActive, setIsVideoActive] = useState(false);
+  
+  // Process active image URL
+  const processedActiveImg = useMemo(() => processImageUrl(activeImg), [activeImg]);
+  
+  // Process thumbnail URLs
+  const processedImageURLs = useMemo(() => 
+    imageURLs?.map(item => ({
+      ...item,
+      img: processImageUrl(item.img)
+    }))
+  , [imageURLs]);
 
   return (
     <>
       <div className="tp-product-details-thumb-wrapper tp-tab d-sm-flex">
         <nav>
           <div className="nav nav-tabs flex-sm-column">
-            {imageURLs?.map((item, i) => {
+            {processedImageURLs?.map((item, i) => {
+              const isCloudinary = isCloudinaryUrl(item.img);
               return item.type === "video" ? (
                 <button
                   key={i}
@@ -41,6 +68,12 @@ const DetailsThumbWrapper = ({
                     width={80}
                     height={80}
                     style={{ width: 80, height: 80, objectFit: 'contain', borderRadius: 8 }}
+                    unoptimized={isCloudinary}
+                    loading="lazy"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = '/assets/img/product/default-product-img.jpg';
+                    }}
                   />
                   <span
                     style={{
@@ -75,6 +108,12 @@ const DetailsThumbWrapper = ({
                     width={80}
                     height={80}
                     style={{ width: "100%", height: "100%", objectFit: 'contain' }}
+                    unoptimized={isCloudinary}
+                    loading="lazy"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = '/assets/img/product/default-product-img.jpg';
+                    }}
                   />
                 </button>
               );
@@ -93,11 +132,17 @@ const DetailsThumbWrapper = ({
                 />
               ) : (
                 <Image
-                  src={activeImg}
+                  src={processedActiveImg}
                   alt="product img"
                   width={imgWidth}
                   height={imgHeight}
                   style={{ objectFit: 'contain' }}
+                  unoptimized={isCloudinaryUrl(processedActiveImg)}
+                  priority={true}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/assets/img/product/default-product-img.jpg';
+                  }}
                 />
               )}
               <div className="tp-product-badge">
