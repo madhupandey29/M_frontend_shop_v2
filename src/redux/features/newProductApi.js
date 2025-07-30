@@ -94,13 +94,13 @@ export const newProductApi = apiSlice.injectEndpoints({
       query: (id) => `/groupcode/view/${id}`,
     }),
     getPopularNewProducts: builder.query({
-      query: () => "/product/popular",
+      query: () => "/seo/popular",
     }),
-    getOffers: builder.query({
+   /*  getOffers: builder.query({
       query: () => "/product/offers",
-    }),
+    }), */
     getTopRated: builder.query({
-      query: () => "/product/toprated",
+      query: () => "/seo/top-rated",
     }),
   }),
 });

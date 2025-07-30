@@ -6,7 +6,7 @@ import Wrapper from "@/layout/wrapper";
 import HeaderTwo from '@/layout/headers/header-2';
 import FashionBanner from '@/components/banner/fashion-banner';
 import PopularProducts from '@/components/products/fashion/popular-products';
-import ProductArea from '@/components/products/fashion/product-area';
+/* import ProductArea from '@/components/products/fashion/product-area'; */
 import WeeksFeatured from '@/components/products/fashion/weeks-featured';
 import BestSellerProducts from '@/components/products/fashion/best-seller-products';
 import FashionTestimonial from '@/components/testimonial/fashion-testimonial';
@@ -242,7 +242,7 @@ export default function HomePageTwo() {
       <h1 style={{position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden'}}>Welcome to Amrita Global Enterprise - Quality Products & Services</h1>
       <FashionBanner />
       <PopularProducts />
-      <ProductArea />
+     {/*  <ProductArea /> */}
       <WeeksFeatured />
       <FashionTestimonial />
       <BlogArea />

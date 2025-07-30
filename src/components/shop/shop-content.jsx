@@ -1,13 +1,9 @@
 'use client'
-import React,{ useState} from 'react';
+import React,{ useState, useEffect } from 'react';
 import Pagination from "@/ui/Pagination";
 import ProductItem from "../products/fashion/product-item";
-// import CategoryFilter from "./shop-filter/category-filter";
-// import ColorFilter from "./shop-filter/color-filter";
 import PriceFilter from "./shop-filter/price-filter";
 import StatusFilter from "./shop-filter/status-filter";
-// import GsmFilter from "./shop-filter/gsm-filter";
-// import OzFilter from "./shop-filter/oz-filter";
 import ShopListItem from "./shop-list-item";
 import ShopTopLeft from "./shop-top-left";
 import ShopTopRight from "./shop-top-right";
@@ -15,13 +11,21 @@ import ResetButton from "./shop-filter/reset-button";
 import ShopSidebarFilters from "./ShopSidebarFilters";
 import PopularProductImages from "@/components/products/fashion/popular-product-images";
 import WeeksFeaturedImages from "@/components/products/fashion/weeks-featured-images";
+import { useGetPopularNewProductsQuery, useGetTopRatedQuery } from "@/redux/features/newProductApi";
 
-const ShopContent = ({all_products = [],products = [],otherProps,shop_right,hidden_sidebar}) => {
-  const {priceFilterValues,selectHandleFilter,currPage,setCurrPage,selectedFilters,handleFilterChange} = otherProps;
+const ShopContent = ({all_products = [], products = [], otherProps, shop_right, hidden_sidebar}) => {
+  const {priceFilterValues, selectHandleFilter, currPage, setCurrPage, selectedFilters, handleFilterChange} = otherProps;
   const {setPriceValue} = priceFilterValues || {};
   const [filteredRows, setFilteredRows] = useState(products);
   const [pageStart, setPageStart] = useState(0);
   const [countOfPage, setCountOfPage] = useState(12);
+
+  // Fetch popular and top-rated products
+  const { data: popularProductsData, isLoading: isLoadingPopular } = useGetPopularNewProductsQuery();
+  const { data: topRatedData, isLoading: isLoadingTopRated } = useGetTopRatedQuery();
+
+  const popularProducts = popularProductsData?.data || [];
+  const topRatedProducts = topRatedData?.data || [];
 
   const paginatedData = (items, startPage, pageCount) => {
     setFilteredRows(items);
@@ -45,10 +49,33 @@ const ShopContent = ({all_products = [],products = [],otherProps,shop_right,hidd
                 <div className="tp-shop-sidebar mr-10">
                   <PriceFilter priceFilterValues={priceFilterValues} maxPrice={maxPrice} />
                   <StatusFilter setCurrPage={setCurrPage} />
-                  <ShopSidebarFilters selected={selectedFilters} onFilterChange={handleFilterChange} />
+                  <ShopSidebarFilters 
+                    onFilterChange={handleFilterChange} 
+                    selected={selectedFilters} 
+                  />
                   <ResetButton setPriceValues={setPriceValue} maxPrice={maxPrice} handleFilterChange={handleFilterChange} />
-                  <PopularProductImages />
-                  <WeeksFeaturedImages />
+                  
+                  {/* Popular Products */}
+                  <div className="tp-shop-widget mb-30">
+                    <div className="tp-shop-widget-title">
+                      <h3 className="tp-shop-widget-title">Popular Products</h3>
+                    </div>
+                    <PopularProductImages 
+                      products={popularProducts.map(item => item.product)} 
+                      loading={isLoadingPopular} 
+                    />
+                  </div>
+                  
+                  {/* Top Rated Products */}
+                  <div className="tp-shop-widget mb-30">
+                    <div className="tp-shop-widget-title">
+                      <h3 className="tp-shop-widget-title">Top Rated Products</h3>
+                    </div>
+                    <WeeksFeaturedImages 
+                      products={topRatedProducts.map(item => item.product)} 
+                      loading={isLoadingTopRated} 
+                    />
+                  </div>
                 </div>
               </div>
             )}
@@ -142,10 +169,19 @@ const ShopContent = ({all_products = [],products = [],otherProps,shop_right,hidd
                 <div className="tp-shop-sidebar mr-10">
                   <PriceFilter priceFilterValues={priceFilterValues} maxPrice={maxPrice} />
                   <StatusFilter setCurrPage={setCurrPage} />
-                  <ShopSidebarFilters selected={selectedFilters} onFilterChange={handleFilterChange} />
+                  <ShopSidebarFilters 
+                    onFilterChange={handleFilterChange} 
+                    selected={selectedFilters} 
+                  />
                   <ResetButton setPriceValues={setPriceValue} maxPrice={maxPrice} handleFilterChange={handleFilterChange} />
-                  <PopularProductImages />
-                  <WeeksFeaturedImages />
+                  <PopularProductImages 
+                    products={popularProducts.map(item => item.product)} 
+                    loading={isLoadingPopular} 
+                  />
+                  <WeeksFeaturedImages 
+                    products={topRatedProducts.map(item => item.product)} 
+                    loading={isLoadingTopRated} 
+                  />
                 </div>
               </div>
             )}
