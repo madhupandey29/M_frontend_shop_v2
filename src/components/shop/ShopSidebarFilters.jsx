@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 
 
 const FILTERS = [
-  { key: 'category', label: 'Category', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/newcategory/viewcategory` },
-  { key: 'color', label: 'Color', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/color/view` },
-  { key: 'content', label: 'Content', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/content/viewcontent` },
-  { key: 'design', label: 'Design', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/design/view` },
-  { key: 'structure', label: 'Structure', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/structure/view`, sub: { key: 'substructure', label: 'Substructure', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/substructure/view` } },
-  { key: 'finish', label: 'Finish', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/finish/view`, sub: { key: 'subfinish', label: 'Subfinish', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/subfinish/view` } },
-  { key: 'groupcode', label: 'Groupcode', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/groupcode/view` },
-  { key: 'vendor', label: 'Vendor', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/vendor/view` },
-  { key: 'suitablefor', label: 'Suitable For', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/suitablefor/view`, sub: { key: 'subsuitable', label: 'Sub Suitable For', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/subsuitable/view` } },
-  { key: 'motifsize', label: 'Motifsize', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/motifsize/view` },
+  { key: 'category', label: 'Category', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/category/` },
+  { key: 'color', label: 'Color', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/color/` },
+  { key: 'content', label: 'Content', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/content/` },
+  { key: 'design', label: 'Design', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/design/` },
+  { key: 'structure', label: 'Structure', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/structure/`, sub: { key: 'substructure', label: 'Substructure', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/substructure/` } },
+  { key: 'finish', label: 'Finish', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/finish/`, sub: { key: 'subfinish', label: 'Subfinish', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/subfinish/` } },
+  { key: 'groupcode', label: 'Groupcode', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/groupcode/` },
+  { key: 'vendor', label: 'Vendor', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/vendor/` },
+  { key: 'suitablefor', label: 'Suitable For', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/suitablefor/`, sub: { key: 'subsuitable', label: 'Sub Suitable For', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/subsuitable/` } },
+  { key: 'motifsize', label: 'Motifsize', api: `${process.env.NEXT_PUBLIC_API_BASE_URL}/motifsize/ ` },
 ];
 
 const fetchOptions = async (api) => {
