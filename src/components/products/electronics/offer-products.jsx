@@ -6,8 +6,8 @@ import Link from "next/link";
 // internal
 import ProductItem from "./product-item";
 import { useGetOfferProductsQuery } from "@/redux/features/productApi";
-import { ArrowRightLong, ShapeLine } from "@/svg";
-import ErrorMsg from "@/components/common/error-msg";
+import { ArrowRightLong, ShapeLine } from '../../../svg';
+import ErrorMsg from '../../../components/common/error-msg';
 import HomeOfferPrdLoader from "@/components/loader/home/home-offer-prd-loader";
 
 // slider setting

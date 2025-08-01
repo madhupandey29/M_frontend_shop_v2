@@ -4,10 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 // internal
-import { Cart, QuickView, Wishlist } from '@/svg';
-import { handleProductModal } from '@/redux/features/productModalSlice';
-import { add_cart_product } from '@/redux/features/cartSlice';
-import { add_to_wishlist } from '@/redux/features/wishlist-slice';
+import { Cart, QuickView, Wishlist } from '../../../svg';
+import { handleProductModal } from '../../../redux/features/productModalSlice';
+import { add_cart_product } from '../../../redux/features/cartSlice';
+import { add_to_wishlist } from '../../../redux/features/wishlist-slice';
 
 const ProductItem = ({ product }) => {
   const dispatch = useDispatch();

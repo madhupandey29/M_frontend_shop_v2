@@ -5,10 +5,10 @@ import { Rating } from "react-simple-star-rating";
 import dayjs from "dayjs";
 import { useDispatch, useSelector } from "react-redux";
 // internal
-import { Cart, QuickView, Wishlist } from "@/svg";
+import { Cart, QuickView, Wishlist } from '../../../svg';
 import Timer from "@/components/common/timer";
 import { handleProductModal } from "@/redux/features/productModalSlice";
-import { add_cart_product } from "@/redux/features/cartSlice";
+import { add_cart_product } from "../../../redux/features/cartSlice";
 import { add_to_wishlist } from "@/redux/features/wishlist-slice";
 
 const ProductItem = ({ product, offer_style = false }) => {

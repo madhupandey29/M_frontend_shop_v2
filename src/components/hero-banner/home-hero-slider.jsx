@@ -13,7 +13,7 @@ import shape_1 from "@assets/img/slider/shape/slider-shape-1.png";
 import shape_2 from "@assets/img/slider/shape/slider-shape-2.png";
 import shape_3 from "@assets/img/slider/shape/slider-shape-3.png";
 import shape_4 from "@assets/img/slider/shape/slider-shape-4.png";
-import { ArrowRightLong, SliderNextBtn, SliderPrevBtn, TextShape } from "@/svg";
+import { ArrowRightLong, SliderNextBtn, SliderPrevBtn, TextShape } from '../../../svg';
 
 // slider data
 const sliderData = [

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getLocalStorage, setLocalStorage } from "@/utils/localstorage";
-import { notifyError, notifySuccess } from "@/utils/toast";
+import { getLocalStorage, setLocalStorage } from "../../utils/localstorage";
+import { notifyError, notifySuccess } from "../../utils/toast";
 
 const initialState = {
   cart_products: [],

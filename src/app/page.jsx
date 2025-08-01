@@ -2,19 +2,19 @@
 /* eslint-disable no-unused-vars */
 'use client';
 import React, { useState } from "react";
-import Wrapper from "@/layout/wrapper";
-import HeaderTwo from '@/layout/headers/header-2';
-import FashionBanner from '@/components/banner/fashion-banner';
-import PopularProducts from '@/components/products/fashion/popular-products';
+import Wrapper from "../layout/wrapper";
+import HeaderTwo from '../layout/headers/header-2';
+import FashionBanner from '../components/banner/fashion-banner';
+import PopularProducts from '../components/products/fashion/popular-products';
 /* import ProductArea from '@/components/products/fashion/product-area'; */
-import WeeksFeatured from '@/components/products/fashion/weeks-featured';
-import BestSellerProducts from '@/components/products/fashion/best-seller-products';
-import FashionTestimonial from '@/components/testimonial/fashion-testimonial';
-import BlogArea from '@/components/blog/fashion/blog-area';
-import FeatureAreaTwo from '@/components/features/feature-area-2';
+import WeeksFeatured from '../components/products/fashion/weeks-featured';
+import BestSellerProducts from '../components/products/fashion/best-seller-products';
+import FashionTestimonial from '../components/testimonial/fashion-testimonial';
+import BlogArea from '../components/blog/fashion/blog-area';
+import FeatureAreaTwo from '../components/features/feature-area-2';
 import { FiMessageCircle } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
-import Footer from '@/layout/footers/footer';
+import Footer from '../layout/footers/footer';
 import styles from './FloatingButtons.module.scss';
 
 export default function HomePageTwo() {

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import ErrorMsg from "../common/error-msg";
-import { ArrowRightSm, ArrowRightSmTwo } from "@/svg";
+import { ArrowRightSm, ArrowRightSmTwo } from '../../../svg';
 import { useGetProductTypeCategoryQuery } from "@/redux/features/categoryApi";
 import { HomeThreeCategoryLoader } from "../loader";
 

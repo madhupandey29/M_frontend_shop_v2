@@ -2,11 +2,11 @@
 import React from 'react';
 import Link from 'next/link';
 // internal
-import { ArrowRightSmTwo } from '@/svg';
+import { ArrowRightSmTwo } from '../../../svg';
 import ProductItem from './product-item';
-import ErrorMsg from '@/components/common/error-msg';
+import ErrorMsg from '../../../components/common/error-msg';
 import { useGetProductsByTypeQuery } from '@/redux/features/productApi';
-import { HomeThreePrdLoader } from '@/components/loader';
+import { HomeThreePrdLoader } from '../../../components/loader'';
 
 const ProductArea = () => {
   const { data, isError, isLoading } = useGetProductsByTypeQuery({ type: 'beauty', query: 'topSellers=true' });

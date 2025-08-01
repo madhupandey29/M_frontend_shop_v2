@@ -1,9 +1,9 @@
 'use client';
 import React, { useEffect, useState } from "react";
 import { useGetProductsByTypeQuery } from "@/redux/features/productApi";
-import { ShapeLine, TabLine } from "@/svg";
+import { ShapeLine, TabLine } from '../../../svg';
 import ProductItem from "./product-item";
-import ErrorMsg from "@/components/common/error-msg";
+import ErrorMsg from '../../../components/common/error-msg';
 import HomePrdLoader from "@/components/loader/home/home-prd-loader";
 
 const tabs = ["new", "featured", "topSellers"];

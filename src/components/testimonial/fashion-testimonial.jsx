@@ -6,8 +6,8 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { Rating } from 'react-simple-star-rating';
 // internal
-import { ArrowRightLong, PrevLongArrTwo } from '@/svg';
-import { fashion_testi_data } from '@/data/testimonial-data';
+import { ArrowRightLong, PrevLongArrTwo } from '../../svg';
+import { fashion_testi_data } from '../../data/testimonial-data';
 
 // slider setting
 const slider_setting = {

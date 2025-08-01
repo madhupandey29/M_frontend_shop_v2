@@ -11,7 +11,7 @@ import ResetButton from "./shop-filter/reset-button";
 import ShopSidebarFilters from "./ShopSidebarFilters";
 import PopularProductImages from "@/components/products/fashion/popular-product-images";
 import WeeksFeaturedImages from "@/components/products/fashion/weeks-featured-images";
-import { useGetPopularNewProductsQuery, useGetTopRatedQuery } from "@/redux/features/newProductApi";
+import { useGetPopularNewProductsQuery, useGetTopRatedQuery } from "../../../redux/features/newProductApi";
 
 const ShopContent = ({all_products = [], products = [], otherProps, shop_right, hidden_sidebar}) => {
   const {priceFilterValues, selectHandleFilter, currPage, setCurrPage, selectedFilters, handleFilterChange} = otherProps;

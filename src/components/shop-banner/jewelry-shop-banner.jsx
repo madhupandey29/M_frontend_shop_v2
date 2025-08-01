@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 // internal
-import { ArrowRightLong } from '@/svg';
+import { ArrowRightLong } from '../../../svg';
 import banner_bg_1 from '@assets/img/banner/4/banner-1.jpg';
 import banner_bg_2 from '@assets/img/banner/4/banner-2.jpg';
 import banner_bg_3 from '@assets/img/banner/4/banner-3.jpg';

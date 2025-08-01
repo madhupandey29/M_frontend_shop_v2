@@ -2,12 +2,12 @@
 'use client';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useGetStructureQuery } from '@/redux/features/structureApi';
-import { useGetContentByIdQuery } from '@/redux/features/contentApi';
-import { useGetFinishByIdQuery } from '@/redux/features/finishApi';
-import { add_cart_product } from '@/redux/features/cartSlice';
-import { add_to_wishlist } from '@/redux/features/wishlist-slice';
-import { add_to_compare } from '@/redux/features/compareSlice';
+import { useGetStructureQuery } from '../../redux/features/structureApi';
+import { useGetContentByIdQuery } from '../..//redux/features/contentApi';
+import { useGetFinishByIdQuery } from '../../redux/features/finishApi';
+import { add_cart_product } from '../../redux/features/cartSlice';
+import { add_to_wishlist } from '../../redux/features/wishlist-slice';
+import { add_to_compare } from '../../redux/features/compareSlice';
 
 // internal
 // Define a separate, dedicated component for each piece of information.

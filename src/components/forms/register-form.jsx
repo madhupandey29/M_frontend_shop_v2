@@ -5,9 +5,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 // internal
-import { CloseEye, OpenEye } from "@/svg";
+import { CloseEye, OpenEye } from '../../../svg';
 import ErrorMsg from "../common/error-msg";
-import { notifyError, notifySuccess } from "@/utils/toast";
+import { notifyError, notifySuccess } from "../../../utils/toast";
 import { useRegisterUserMutation } from "@/redux/features/auth/authApi";
 
 // schema

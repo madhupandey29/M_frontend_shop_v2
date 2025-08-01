@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useGetPopularNewProductsQuery } from "@/redux/features/newProductApi";
+import { useGetPopularNewProductsQuery } from "../../../redux/features/newProductApi";
 
 const rowStyle = {
   display: 'flex',

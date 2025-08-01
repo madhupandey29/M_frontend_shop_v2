@@ -6,7 +6,7 @@ import * as Yup from "yup";
 // internal
 import ErrorMsg from "../common/error-msg";
 import { useChangePasswordMutation } from "@/redux/features/auth/authApi";
-import { notifyError, notifySuccess } from "@/utils/toast";
+import { notifyError, notifySuccess } from "../../../utils/toast";
 
 // schema
 const schema = Yup.object().shape({

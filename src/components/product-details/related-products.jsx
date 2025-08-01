@@ -4,7 +4,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {  Navigation,Autoplay } from "swiper/modules";
 // internal
-import { useGetGroupCodeProductsQuery } from "@/redux/features/newProductApi";
+import { useGetGroupCodeProductsQuery } from "../../redux/features/newProductApi";
 import ProductItem from "../products/fashion/product-item";
 import ErrorMsg from "../common/error-msg";
 import { HomeNewArrivalPrdLoader } from "../loader";

@@ -2,11 +2,11 @@
 import React from 'react';
 import Link from 'next/link';
 // internal
-import { TextShapeLine } from '@/svg';
+import { TextShapeLine } from '../../../svg';
 import ProductItem from './product-item';
-import ErrorMsg from '@/components/common/error-msg';
-import { useGetProductsByTypeQuery } from '@/redux/features/productApi';
-import { HomeTwoBestSellPrdPrdLoader } from '@/components/loader';
+import ErrorMsg from '../../../components/common/error-msg';
+import { useGetProductsByTypeQuery } from '../../../redux/features/productApi';
+import { HomeTwoBestSellPrdPrdLoader } from '../../../components/loader';
 
 const BestSellerProducts = () => {
   const { data, isError, isLoading } = useGetProductsByTypeQuery({ type: 'fashion', query: 'topSellers=true' });

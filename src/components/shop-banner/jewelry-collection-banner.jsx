@@ -6,7 +6,7 @@ import Link from 'next/link';
 import thumb_bg from '@assets/img/product/collection/4/collection-1.jpg';
 import side_text from '@assets/img/product/collection/4/side-text.png';
 import collection_sm from '@assets/img/product/collection/4/collection-sm-1.jpg';
-import { ArrowRightSm, PlusTwo } from '@/svg';
+import { ArrowRightSm, PlusTwo } from '../../../svg';
 
 const JewelryCollectionBanner = () => {
   return (

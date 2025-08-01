@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { mobile_menu } from "@/data/menu-data";
+import { mobile_menu } from "../../data/menu-data";
 
 const MobileMenus = () => {
   const [isActiveMenu,setIsActiveMenu] = useState("")

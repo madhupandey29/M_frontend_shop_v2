@@ -4,10 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 // internal
-import useCartInfo from '@/hooks/use-cart-info';
+import useCartInfo from '../../hooks/use-cart-info';
 import RenderCartProgress from './render-cart-progress';
-import empty_cart_img from '@assets/img/product/cartmini/empty-cart.png';
-import { closeCartMini, remove_product } from '@/redux/features/cartSlice';
+import empty_cart_img from '../../../public/assets/img/product/cartmini/empty-cart.png';
+import { closeCartMini, remove_product } from '../../redux/features/cartSlice';
+
 
 const CartMiniSidebar = () => {
   const { cart_products, cartMiniOpen } = useSelector((state) => state.cart);

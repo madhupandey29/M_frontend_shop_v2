@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useGetTopRatedQuery } from "@/redux/features/newProductApi";
+import { useGetTopRatedQuery } from "../../../redux/features/newProductApi";
 
 const getImageUrl = (item) => {
   if (item.image && item.image.startsWith('http')) return item.image;

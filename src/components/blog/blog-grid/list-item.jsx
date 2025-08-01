@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRightLong, Comment, Date } from "@/svg";
+import { ArrowRightLong, Comment, Date } from '../../../svg';
 
 const ListItem = ({ blog }) => {
   const { id, list_img, date, comments, title, desc } = blog || {};

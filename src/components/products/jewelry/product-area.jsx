@@ -1,9 +1,9 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
-import ErrorMsg from '@/components/common/error-msg';
+import ErrorMsg from '../../../components/common/error-msg';
 import { useGetProductsByTypeQuery } from '@/redux/features/productApi';
 import ProductItem from './product-item';
-import { HomeTwoPrdLoader } from '@/components/loader';
+import { HomeTwoPrdLoader } from '../../../components/loader'';
 
 // tabs
 const tabs = ["All Collection", "Bracelets", "Necklaces", "Earrings"];

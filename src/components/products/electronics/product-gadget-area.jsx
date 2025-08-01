@@ -5,15 +5,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Pagination } from 'swiper/modules';
 import Link from 'next/link';
 // internal
-import { ArrowRight } from '@/svg';
+import { ArrowRight } from '../../../svg';
 import ProductItem from './product-item';
 import PrdCategoryList from './prd-category-list';
-import ErrorMsg from '@/components/common/error-msg';
+import ErrorMsg from '../../../components/common/error-msg';
 import b_bg_1 from '@assets/img/product/gadget/gadget-banner-1.jpg';
 import b_bg_2 from '@assets/img/product/gadget/gadget-banner-2.jpg';
 import { useGetProductsByTypeQuery } from '@/redux/features/productApi';
 import gadget_girl from '@assets/img/product/gadget/gadget-girl.png';
-import HomeGadgetPrdLoader from '@/components/loader/home/home-gadget-prd-loader';
+import HomeGadgetPrdLoader from '../../../components/loader'/home/home-gadget-prd-loader';
 
 const ProductGadgetArea = () => {
   const { data: products, isError, isLoading } = useGetProductsByTypeQuery({type:'electronics', query: ''});

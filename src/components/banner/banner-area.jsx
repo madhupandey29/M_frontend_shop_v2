@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 // internal
-import { ArrowRight } from "@/svg";
+import { ArrowRight } from '../../../svg';
 import banner_1 from "@assets/img/product/banner/product-banner-1.jpg";
 import banner_2 from "@assets/img/product/banner/product-banner-2.jpg";
 import styles from './BannerArea.module.scss';

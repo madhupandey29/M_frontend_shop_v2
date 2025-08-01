@@ -3,7 +3,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 // internal
-import { ArrowRightLong, ShapeLine } from '@/svg';
+import { ArrowRightLong, ShapeLine } from '../../../svg';
 import blogData from '@/data/blog-data';
 import BlogItem from './blog-item';
 import Link from 'next/link';

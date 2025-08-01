@@ -4,9 +4,9 @@ import { Scrollbar } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // internal
 import ProductItem from './product-item';
-import ErrorMsg from '@/components/common/error-msg';
+import ErrorMsg from '../../../components/common/error-msg';
 import { useGetProductsByTypeQuery } from '@/redux/features/productApi';
-import { HomeTwoBestSellPrdPrdLoader } from '@/components/loader';
+import { HomeTwoBestSellPrdPrdLoader } from '../../../components/loader'';
 
 // slider setting
 const slider_setting = {

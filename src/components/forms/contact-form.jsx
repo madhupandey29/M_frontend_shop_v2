@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 // internal
 import ErrorMsg from "../common/error-msg";
-import { notifySuccess } from "@/utils/toast";
+import { notifySuccess } from "../../../utils/toast";
 
 // schema
 const schema = Yup.object().shape({

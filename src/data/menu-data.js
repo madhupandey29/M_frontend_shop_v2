@@ -1,7 +1,7 @@
-import home_1 from '@assets/img/menu/menu-home-1.jpg';
-import home_2 from '@assets/img/menu/menu-home-2.jpg';
-import home_3 from '@assets/img/menu/menu-home-3.jpg';
-import home_4 from '@assets/img/menu/menu-home-4.jpg';
+import home_1 from '../../public/assets/img/menu/menu-home-1.jpg';
+import home_2 from '../../public/assets/img/menu/menu-home-2.jpg';
+import home_3 from '../../public/assets/img/menu/menu-home-3.jpg';
+import home_4 from '../../public/assets/img/menu/menu-home-4.jpg';
 
 const menu_data = [
   {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRightLong, ArrowRightLongPrev } from '@/svg';
+import { ArrowRightLong, ArrowRightLongPrev } from '../../../svg';
 
 const PostboxDetailsNav = () => {
   return (

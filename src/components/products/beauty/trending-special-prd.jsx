@@ -5,11 +5,11 @@ import { Pagination, Navigation, EffectFade } from 'swiper/modules';
 import Image from 'next/image';
 // internal
 import special_thumb from '@assets/img/product/special/big/special-big-1.jpg';
-import { ArrowNextSm, ArrowPrevSm, PlusTwo } from '@/svg';
+import { ArrowNextSm, ArrowPrevSm, PlusTwo } from '../../../svg';
 import { useGetProductsByTypeQuery } from '@/redux/features/productApi';
-import ErrorMsg from '@/components/common/error-msg';
+import ErrorMsg from '../../../components/common/error-msg';
 import ProductItem from './product-item';
-import { HomeThreeTrendingPrdLoader } from '@/components/loader';
+import { HomeThreeTrendingPrdLoader } from '../../../components/loader'';
 
 // slider setting 
 const sliderSetting = {

@@ -1,17 +1,24 @@
 'use client';
+
 import React from "react";
-// const PrdDetailsLoader = ... // Commented out because it is defined but never used
 import ErrorMsg from "../common/error-msg";
 import ProductDetailsBreadcrumb from "../breadcrumb/product-details-breadcrumb";
 import ProductDetailsContent from "./product-details-content";
 
 const ProductDetailsArea = ({ product }) => {
-  if (!product) {
+  if (!product || !product.title) {
     return <ErrorMsg msg="No product found!" />;
   }
+
   return (
     <>
-      <ProductDetailsBreadcrumb category={product.category.name} title={product.title} />
+      {/* Breadcrumb Navigation */}
+      <ProductDetailsBreadcrumb
+        category={product?.category?.name || "Uncategorized"}
+        title={product?.title || "Product"}
+      />
+
+      {/* Main Product Content */}
       <ProductDetailsContent productItem={product} />
     </>
   );

@@ -9,13 +9,13 @@ import useSticky from "@/hooks/use-sticky";
 import logo from "@assets/img/logo/logo.svg";
 import useCartInfo from "@/hooks/use-cart-info";
 import OffCanvas from "@/components/common/off-canvas";
-import { openCartMini } from "@/redux/features/cartSlice";
+import { openCartMini } from "../../../redux/features/cartSlice";
 import HeaderCategory from "./header-com/header-category";
 import HeaderTopRight from "./header-com/header-top-right";
 import HeaderMainRight from "./header-com/header-main-right";
 import CartMiniSidebar from "@/components/common/cart-mini-sidebar";
 import HeaderSearchForm from "@/components/forms/header-search-form";
-import { CartTwo, CategoryMenu, Compare, Menu, Phone, ShippingCar, Wishlist } from "@/svg";
+import { CartTwo, CategoryMenu, Compare, Menu, Phone, ShippingCar, Wishlist } from '../../../svg';
 
 const Header = () => {
   const { wishlist } = useSelector((state) => state.wishlist);

@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import ReactToPrint from "react-to-print";
 // internal
 import logo from "@assets/img/logo/logo.svg";
-import ErrorMsg from "@/components/common/error-msg";
+import ErrorMsg from '../../../components/common/error-msg';
 import { useGetUserOrderByIdQuery } from "@/redux/features/order/orderApi";
 import PrdDetailsLoader from "@/components/loader/prd-details-loader";
 

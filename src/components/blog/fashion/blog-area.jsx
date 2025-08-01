@@ -2,8 +2,8 @@
 import React from 'react';
 import Link from 'next/link';
 // internal
-import blogData from '@/data/blog-data';
-import { TextShapeLine } from '@/svg';
+import blogData from '../../../data/blog-data';
+import { TextShapeLine } from '../../../svg/';
 import BlogItem from './blog-item';
 
 const BlogArea = () => {

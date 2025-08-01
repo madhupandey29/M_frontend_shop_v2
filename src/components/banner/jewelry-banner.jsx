@@ -13,7 +13,7 @@ import nav_icon_1 from '@assets/img/slider/4/nav/icon-1.png';
 import nav_icon_2 from '@assets/img/slider/4/nav/icon-2.png';
 import nav_icon_3 from '@assets/img/slider/4/nav/icon-3.png';
 import nav_icon_4 from '@assets/img/slider/4/nav/icon-4.png';
-import { ArrowNextTwo, ArrowPrevTwo, Pause, Play } from '@/svg';
+import { ArrowNextTwo, ArrowPrevTwo, Pause, Play } from '../../../svg';
 import text_shape from '@assets/img/slider/4/shape/rounded-test.png';
 
 // slider data 

@@ -5,7 +5,7 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import Image from "next/image";
 // internal
 import OfferTimer from "./offer-timer";
-import { InfoDetails } from "@/svg";
+import { InfoDetails } from '../../../svg';
 
 const CouponItem = ({ coupon, handleCopied, copiedCode, copied }) => {
   return (

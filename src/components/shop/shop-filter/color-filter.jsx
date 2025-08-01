@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from 'next/navigation';
 // internal
-import ErrorMsg from "@/components/common/error-msg";
+import ErrorMsg from '../../../components/common/error-msg';
 import { useGetAllProductsQuery } from "@/redux/features/productApi";
 import { handleFilterSidebarClose } from "@/redux/features/shop-filter-slice";
 import ShopColorLoader from "@/components/loader/shop/color-filter-loader";

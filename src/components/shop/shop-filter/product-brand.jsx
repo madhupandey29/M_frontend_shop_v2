@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 // internal
-import ErrorMsg from "@/components/common/error-msg";
+import ErrorMsg from '../../../components/common/error-msg';
 import { useGetActiveBrandsQuery } from "@/redux/features/brandApi";
 import { handleFilterSidebarClose } from "@/redux/features/shop-filter-slice";
 import ShopBrandLoader from "@/components/loader/shop/shop-brand-loader";

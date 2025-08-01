@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Delivery, Discount, Refund, Support } from '@/svg';
+import { Delivery, Discount, Refund, Support } from '../../svg';
 
 export const feature_data = [
   {

@@ -1,94 +1,147 @@
-'use client';
-import React, { useState, useEffect } from "react";
-import DetailsThumbWrapper from "@components/product-details/details-thumb-wrapper";
-import DetailsWrapper from "@components/product-details/details-wrapper";
-import DetailsTabNav from "@components/product-details/details-tab-nav";
-import RelatedProducts from "@components/product-details/related-products";
-import { useGetSeoByProductQuery } from "@/redux/features/seoApi";
+// ✅ FILE: app/fabric/[slug]/page.jsx
+import ProductDetailsArea from '../../../components/product-details/product-details-area';
+import ErrorMsg from '../../../components/common/error-msg';
+import Wrapper from '@/layout/wrapper';
+import HeaderTwo from '@/layout/headers/header-2';
+import Footer from '@/layout/footers/footer';
 
-const ProductDetailsContent = ({ productItem }) => {
-  const { _id, img, imageURLs, videoId, status, groupcodeId } = productItem || {};
-  const [activeImg, setActiveImg] = useState(img);
-  // active image change when img change
-  useEffect(() => {
-    setActiveImg(img);
-  }, [img]);
+export const revalidate = 60; // ISR
 
-  // handle image active
-  const handleImageActive = (item) => {
-    setActiveImg(item.img);
+// ✅ METADATA (SSR Friendly)
+export async function generateMetadata({ params }) {
+  if (!params?.slug) return {};
+  const slug = params.slug;
+
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/product/slug/${slug}`, {
+      headers: {
+        'x-api-key': process.env.NEXT_PUBLIC_API_KEY,
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      console.error('❌ Metadata fetch failed with status:', res.status);
+      return {};
+    }
+
+    const { data: product } = await res.json();
+
+    return {
+      title: product?.name || 'Product Details',
+      description: product?.description?.slice(0, 160) || '',
+      openGraph: {
+        title: product?.name,
+        description: product?.description?.slice(0, 160) || '',
+        url: `https://yourdomain.com/fabric/${slug}`,
+        type: 'website',
+        images: [product?.image || 'https://yourdomain.com/default-og-image.jpg'],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: product?.name,
+        description: product?.description,
+        images: [product?.image || 'https://yourdomain.com/default-og-image.jpg'],
+      },
+    };
+  } catch (err) {
+    console.error('❌ Metadata fetch error:', err);
+    return {};
+  }
+}
+
+function mapBackendProductToFrontend(product) {
+  const images = [
+    product.image && { img: product.image, type: 'image' },
+    product.image1 && { img: product.image1, type: 'image' },
+    product.image2 && { img: product.image2, type: 'image' },
+  ].filter(Boolean);
+
+  if (product.video && product.videoThumbnail) {
+    images.push({ img: product.videoThumbnail, type: 'video' });
+  }
+
+  return {
+    _id: product._id,
+    title: product.name || product.title,
+    img: product.image || '',
+    imageURLs: images,
+    videoId: product.video || '',
+    price: product.salesPrice,
+    description: product.description,
+    status: product.status || 'in-stock',
+    sku: product.sku,
+    category: { name: product.newCategoryId?.name || 'Default Category' },
+    tags: product.tags || [],
+    offerDate: product.offerDate || { endDate: null },
+    additionalInformation: product.additionalInformation || [],
+    structureId: product.structureId?._id || product.structureId || '',
+    contentId: product.contentId?._id || product.contentId || '',
+    finishId: product.finishId?._id || product.finishId || '',
+    designId: product.designId?._id || product.designId || '',
+    colorId: product.colorId?._id || product.colorId || '',
+    motifsizeId: product.motifsizeId?._id || product.motifsizeId || '',
+    suitableforId: product.suitableforId?._id || product.suitableforId || '',
+    vendorId: product.vendorId?._id || product.vendorId || '',
+    groupcodeId: product.groupcodeId?._id || product.groupcodeId || '',
+    gsm: product.gsm,
+    oz: product.oz,
+    productIdentifier: product.productIdentifier,
+    width: product.cm ? `${product.cm} cm` : product.inch ? `${product.inch} inch` : 'N/A',
   };
-  // Fetch SEO data for the product
-  const { data: seoData, isLoading, isError } = useGetSeoByProductQuery(_id, {
-    skip: !_id,
-  });
+}
 
-  console.log('SEO Data from API:', seoData);
-  console.log('Product ID:', _id);
-  console.log('Is Loading:', isLoading);
-  console.log('Is Error:', isError);
+// ✅ PAGE COMPONENT (Server Component)
+export default async function ProductDetailsPage({ params }) {
+  const slug = params.slug;
 
-  return (
-    <section className="tp-product-details-area">
-      <div className="tp-product-details-top pb-115">
-        <div className="container">
-          <div className="row">
-            <div className="col-xl-7 col-lg-6">
-              {/* product-details-thumb-wrapper start */}
-              <DetailsThumbWrapper
-                activeImg={activeImg}
-                handleImageActive={handleImageActive}
-                imageURLs={imageURLs}
-                imgWidth={580}
-                imgHeight={670}
-                videoId={videoId}
-                status={status}
-              />
-              {/* product-details-thumb-wrapper end */}
-            </div>
-            <div className="col-xl-5 col-lg-6">
-              {/* product-details-wrapper start */}
-              <DetailsWrapper
-                productItem={productItem}
-                handleImageActive={handleImageActive}
-                activeImg={activeImg}
-                detailsBottom={true}
-              />
-              {/* product-details-wrapper end */}
-            </div>
-          </div>
-        </div>
-      </div>
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/product/slug/${slug}`, {
+      headers: {
+        'x-api-key': process.env.NEXT_PUBLIC_API_KEY,
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
 
-      {/* product details description */}
-      <div className="tp-product-details-bottom pb-140">
-        <div className="container">
-          <div className="row">
-            <div className="col-xl-12">
-              <DetailsTabNav product={productItem} seoData={seoData?.data} />
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* product details description */}
+    if (!res.ok) {
+      return (
+        <Wrapper>
+          <HeaderTwo style_2={true} />
+          <ErrorMsg msg={`Failed to fetch product (${res.status})`} />
+          <Footer primary_style={true} />
+        </Wrapper>
+      );
+    }
 
-      {/* related products start */}
-      <section className="tp-related-product pt-95 pb-50">
-        <div className="container">
-          <div className="row">
-            <div className="tp-section-title-wrapper-6 text-center mb-40">
-              <span className="tp-section-title-pre-6">Style it with</span>
-              <h3 className="tp-section-title-6">Mix & Match</h3>
-            </div>
-          </div>
-          <div className="row">
-            <RelatedProducts id={_id} groupcodeId={groupcodeId} />
-          </div>
-        </div>
-      </section>
-      {/* related products end */}
-    </section>
-  );
-};
+    const { data: product } = await res.json();
+    if (!product) {
+      return (
+        <Wrapper>
+          <HeaderTwo style_2={true} />
+          <ErrorMsg msg="Product not found." />
+          <Footer primary_style={true} />
+        </Wrapper>
+      );
+    }
 
-export default ProductDetailsContent;
+    const mapped = mapBackendProductToFrontend(product);
+
+    return (
+      <Wrapper>
+        <HeaderTwo style_2={true} />
+        <ProductDetailsArea product={mapped} />
+        <Footer primary_style={true} />
+      </Wrapper>
+    );
+  } catch (err) {
+    return (
+      <Wrapper>
+        <HeaderTwo style_2={true} />
+        <ErrorMsg msg="Server error while loading product." />
+        <Footer primary_style={true} />
+      </Wrapper>
+    );
+  }
+}

@@ -4,11 +4,11 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from 'next/navigation';
 // internal
-import ErrorMsg from "@/components/common/error-msg";
+import ErrorMsg from '../../../components/common/error-msg';
 import { useGetAllStructuresQuery } from "@/redux/features/structureApi";
 import { handleFilterSidebarClose } from "@/redux/features/shop-filter-slice";
 import ShopStructureLoader from "@/components/loader/shop/structure-filter-loader";
-import { useGetAllNewProductsQuery } from "@/redux/features/newProductApi";
+import { useGetAllNewProductsQuery } from "../../../redux/features/newProductApi";
 
 const StructureFilter = ({setCurrPage,shop_right=false}) => {
   const { data: structures, isError: structureError, isLoading: structureLoading } = useGetAllStructuresQuery();

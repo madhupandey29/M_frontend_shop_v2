@@ -3,7 +3,7 @@ import React from "react";
 import { useRouter,useSearchParams } from "next/navigation";
 import { useDispatch } from "react-redux";
 // internal
-import ErrorMsg from "@/components/common/error-msg";
+import ErrorMsg from '../../../components/common/error-msg';
 import { useGetShowCategoryQuery } from "@/redux/features/categoryApi";
 import { handleFilterSidebarClose } from "@/redux/features/shop-filter-slice";
 import ShopCategoryLoader from "@/components/loader/shop/shop-category-loader";

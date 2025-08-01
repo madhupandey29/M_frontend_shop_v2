@@ -1,4 +1,4 @@
-import { GridTab, ListTab } from "@/svg";
+import { GridTab, ListTab } from '../../../svg';
 import React from "react";
 
 const ShopTopLeft = ({total,showing=9}) => {

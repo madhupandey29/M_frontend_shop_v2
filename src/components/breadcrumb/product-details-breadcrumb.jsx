@@ -1,5 +1,5 @@
 import React from 'react';
-import { SmDot } from '@/svg';
+import { SmDot } from '../../svg/';
 
 const ProductDetailsBreadcrumb = ({category,title}) => {
   return (

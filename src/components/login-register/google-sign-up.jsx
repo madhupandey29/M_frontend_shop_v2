@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 // internal
 import google_icon from "@assets/img/icon/login/google.svg";
 import { useSignUpProviderMutation } from "@/redux/features/auth/authApi";
-import { notifyError, notifySuccess } from "@/utils/toast";
+import { notifyError, notifySuccess } from "../../../utils/toast";
 
 const GoogleSignUp = () => {
   // eslint-disable-next-line no-empty-pattern

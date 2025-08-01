@@ -2,7 +2,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // internal
-import { Minus, Plus } from '@/svg';
+import { Minus, Plus } from '../../../svg';
 import { decrement, increment } from '@/redux/features/cartSlice';
 
 const ProductQuantity = () => {

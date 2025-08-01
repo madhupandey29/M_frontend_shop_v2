@@ -3,9 +3,9 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 // internal
-import { AddCart, Cart, QuickView, Wishlist } from "@/svg";
+import { AddCart, Cart, QuickView, Wishlist } from '../../../svg';
 import { handleProductModal } from "@/redux/features/productModalSlice";
-import { add_cart_product } from "@/redux/features/cartSlice";
+import { add_cart_product } from "../../../redux/features/cartSlice";
 import { add_to_wishlist } from "@/redux/features/wishlist-slice";
 
 const ProductItem = ({ product }) => {

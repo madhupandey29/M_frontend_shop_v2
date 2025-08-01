@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { GridTab, ListTab } from '@/svg';
+import { GridTab, ListTab } from '../../../svg';
 import GridItem from './grid-item';
 import ListItem from './list-item';
 import Pagination from '@/ui/Pagination';

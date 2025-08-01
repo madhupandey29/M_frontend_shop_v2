@@ -1,5 +1,5 @@
 import React from "react";
-import useCartInfo from "@/hooks/use-cart-info";
+import useCartInfo from "../../hooks/use-cart-info";
 
 const RenderCartProgress = () => {
   const { total } = useCartInfo();

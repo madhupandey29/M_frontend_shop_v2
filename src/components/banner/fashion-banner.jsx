@@ -5,10 +5,10 @@ import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, EffectFade, Navigation } from 'swiper/modules';
 // internal
-import slider_img_1 from '@assets/img/slider/2/slider-1.avif';
-import slider_img_2 from '@assets/img/slider/2/slider-2.avif';
-import slider_img_3 from '@assets/img/slider/2/slider-3.avif';
-import slider_shape from '@assets/img/slider/2/shape/shape-1.png';
+import slider_img_1 from '../../../public/assets/img/slider/2/slider-1.avif';
+import slider_img_2 from '../../../public/assets/img/slider/2/slider-2.avif';
+import slider_img_3 from '../../../public/assets/img/slider/2/slider-3.avif';
+import slider_shape from '../../../public/assets/img/slider/2/shape/shape-1.png';
 /* import thumb_shape_1 from '@assets/img/slider/2/shape/shape-2.png';
 import thumb_shape_2 from '@assets/img/slider/2/shape/shape-3.png';
  */

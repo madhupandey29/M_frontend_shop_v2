@@ -9,9 +9,9 @@ if (typeof window !== "undefined") {
   require("bootstrap/dist/js/bootstrap");
 }
 
-import BackToTopCom from "@/components/common/back-to-top";
+import BackToTopCom from "../components/common/back-to-top";
 import ProductModal from "@/components/common/product-modal";
-import { get_cart_products, initialOrderQuantity } from "@/redux/features/cartSlice";
+import { get_cart_products, initialOrderQuantity } from "../../../redux/features/cartSlice";
 import { get_wishlist_products } from "@/redux/features/wishlist-slice";
 import { get_compare_products } from "@/redux/features/compareSlice";
 import useAuthCheck from "@/hooks/use-auth-check";

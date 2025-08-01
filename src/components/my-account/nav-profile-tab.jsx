@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 // internal
-import { Box, DeliveryTwo, Processing, Truck } from "@/svg";
+import { Box, DeliveryTwo, Processing, Truck } from '../../../svg';
 import { userLoggedOut } from "@/redux/features/auth/authSlice";
 
 const NavProfileTab = ({ orderData }) => {

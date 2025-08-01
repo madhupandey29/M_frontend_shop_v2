@@ -7,12 +7,12 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 // internal
-import { TextShapeLine } from "@/svg";
-import ErrorMsg from "@/components/common/error-msg";
-import { useGetPopularNewProductsQuery } from "@/redux/features/newProductApi";
-import { add_cart_product } from "@/redux/features/cartSlice";
-import { HomeTwoPopularPrdLoader } from "@/components/loader";
-import { notifyError } from "@/utils/toast";
+import { TextShapeLine } from "../../../svg";
+import ErrorMsg from '../../../components/common/error-msg';
+import { useGetPopularNewProductsQuery } from "../../../redux/features/newProductApi";
+import { add_cart_product } from "../../../redux/features/cartSlice";
+import { HomeTwoPopularPrdLoader } from "../../../components/loader";
+import { notifyError } from "../../../utils/toast";
 
 // slider setting
 const slider_setting = {

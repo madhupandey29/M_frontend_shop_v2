@@ -1,7 +1,7 @@
 // STRIPE DISABLED: Stripe Elements and related code are commented out as per request.
 'use client'
 import React from 'react';
-import store from "@/redux/store";
+import store from "../redux/store";
 import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 // import { Elements } from '@stripe/react-stripe-js';

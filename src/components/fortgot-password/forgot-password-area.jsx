@@ -6,10 +6,10 @@ import * as Yup from "yup";
 // internal
 import Wrapper from "@/layout/wrapper";
 import LoginShapes from "@/components/login-register/login-shapes";
-import ErrorMsg from "@/components/common/error-msg";
+import ErrorMsg from '../../../components/common/error-msg';
 import { useConfirmForgotPasswordMutation } from "@/redux/features/auth/authApi";
-import { CloseEye, OpenEye } from "@/svg";
-import { notifyError, notifySuccess } from "@/utils/toast";
+import { CloseEye, OpenEye } from '../../../svg';
+import { notifyError, notifySuccess } from "../../../utils/toast";
 
 // schema
 const schema = Yup.object().shape({

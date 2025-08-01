@@ -5,8 +5,8 @@ import { Pagination, Scrollbar } from 'swiper/modules';
 // internal
 import { useGetProductsByTypeQuery } from '@/redux/features/productApi';
 import ProductSliderItem from './product-slider-item';
-import ErrorMsg from '@/components/common/error-msg';
-import { HomeTwoPopularPrdLoader } from '@/components/loader';
+import ErrorMsg from '../../../components/common/error-msg';
+import { HomeTwoPopularPrdLoader } from '../../../components/loader'';
 
 
 // slider setting 

@@ -2,11 +2,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 // internal
-import { CloseTwo } from '@/svg';
-import myLogo from '@assets/img/logo/my_logo.png';
-import contact_img from '@assets/img/icon/contact.png';
-import language_img from '@assets/img/icon/language-flag.png';
-import MobileCategory from '@/layout/headers/header-com/mobile-category';
+import { CloseTwo } from '../../svg';
+import myLogo from '../../../public/assets/img/logo/my_logo.png';
+import contact_img from '../../../public/assets/img/icon/contact.png';
+import language_img from '../../../public/assets/img/icon/language-flag.png';
+import MobileCategory from '../../layout/headers/header-com/mobile-category';
 import MobileMenus from './mobile-menus';
 
 const OffCanvas = ({ isOffCanvasOpen, setIsCanvasOpen,categoryType = "electronics" }) => {

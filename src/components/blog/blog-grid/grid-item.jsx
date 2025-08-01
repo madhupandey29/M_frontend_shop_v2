@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRightLong, Comment, Date } from "@/svg";
+import { ArrowRightLong, Comment, Date } from '../../../svg';
 
 const GridItem = ({ blog, style_2 = false }) => {
   const { id, img, date, comments, title, desc } = blog || {};

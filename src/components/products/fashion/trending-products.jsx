@@ -3,12 +3,12 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 // internal
-import { ArrowRightLong, TextShapeLine } from '@/svg';
+import { ArrowRightLong, TextShapeLine } from '../../../svg';
 import { useGetProductsByTypeQuery } from '@/redux/features/productApi';
 import ProductItem from './product-item';
-import ErrorMsg from '@/components/common/error-msg';
+import ErrorMsg from '../../../components/common/error-msg';
 import trending_banner from '@assets/img/product/trending/banner/trending-banner.jpg';
-import { HomeTwoNewPrdPrdLoader } from '@/components/loader';
+import { HomeTwoNewPrdPrdLoader } from '../../../components/loader'';
 import Link from 'next/link';
 
 // slider setting 

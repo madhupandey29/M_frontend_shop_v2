@@ -5,9 +5,9 @@ import Image from "next/image";
 import { Rating } from "react-simple-star-rating";
 import Link from "next/link";
 // internal
-import { CompareThree, QuickView, Wishlist } from "@/svg";
+import { CompareThree, QuickView, Wishlist } from '../../../svg';
 import { handleProductModal } from "@/redux/features/productModalSlice";
-import { add_cart_product } from "@/redux/features/cartSlice";
+import { add_cart_product } from "../../../redux/features/cartSlice";
 import { add_to_wishlist } from "@/redux/features/wishlist-slice";
 import { add_to_compare } from "@/redux/features/compareSlice";
 

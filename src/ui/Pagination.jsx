@@ -1,6 +1,6 @@
 'use client';
 import { useEffect } from "react";
-import { PaginationNext, PaginationPrev } from "@/svg";
+import { PaginationNext, PaginationPrev } from '../../../svg';
 
 const Pagination = ({
   items = [],

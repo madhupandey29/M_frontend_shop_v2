@@ -7,7 +7,7 @@ import { Navigation, EffectFade, Pagination } from "swiper/modules";
 import slider_bg_1 from "@assets/img/slider/3/slider-1.jpg";
 import slider_bg_2 from "@assets/img/slider/3/slider-2.jpg";
 import slider_bg_3 from "@assets/img/slider/3/slider-3.jpg";
-import { ArrowNext, ArrowPrev, Cosmetics, Meckoup, VeganProduct } from "@/svg";
+import { ArrowNext, ArrowPrev, Cosmetics, Meckoup, VeganProduct } from '../../../svg';
 
 // slider setting
 const slider_setting = {

@@ -3,9 +3,9 @@ import Image from 'next/image';
 import { Rating } from 'react-simple-star-rating';
 import Link from 'next/link';
 // internal
-import ErrorMsg from '@/components/common/error-msg';
+import ErrorMsg from '../../../components/common/error-msg';
 import { useGetAllProductsQuery } from '@/redux/features/productApi';
-import ShopTopRatedLoader from '@/components/loader/shop/top-rated-prd-loader';
+import ShopTopRatedLoader from '../../../components/loader'/shop/top-rated-prd-loader';
 
 const TopRatedProducts = () => {
   const { data: products, isError, isLoading } = useGetAllProductsQuery();

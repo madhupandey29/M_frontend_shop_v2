@@ -5,10 +5,10 @@ import { Navigation } from 'swiper/modules';
 import { Rating } from 'react-simple-star-rating';
 import Link from 'next/link';
 // internal
-import { useGetTopRatedQuery } from '@/redux/features/newProductApi';
-import { ArrowRightLong, NextLongArr, PrevLongArr, TextShapeLine } from '@/svg';
-import ErrorMsg from '@/components/common/error-msg';
-import { HomeTwoFeaturedPrdLoader } from '@/components/loader';
+import { useGetTopRatedQuery } from '../../../redux/features/newProductApi';
+import { ArrowRightLong, NextLongArr, PrevLongArr, TextShapeLine } from '../../../svg';
+import ErrorMsg from '../../../components/common/error-msg';
+import { HomeTwoFeaturedPrdLoader } from '../../../components/loader';
 
 // slider setting 
 const slider_setting = {

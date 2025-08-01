@@ -1,9 +1,9 @@
 'use client';
-import ErrorMsg from '@/components/common/error-msg';
+import ErrorMsg from '../../../components/common/error-msg';
 import { useGetOffersQuery } from '@/redux/features/newProductApi';
 import ProductItem from './product-item';
-import { HomeTwoPrdLoader } from '@/components/loader';
-import { TextShapeLine } from '@/svg';
+import { HomeTwoPrdLoader } from '../../../components/loader'';
+import { TextShapeLine } from '../../../svg';
 
 const ProductArea = () => {
   // Use the offer products API

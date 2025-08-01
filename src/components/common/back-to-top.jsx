@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import BackToTop from "@/lib/back-to-top";
+import BackToTop from "../../lib/back-to-top";
 import styles from "./BackToTop.module.scss";
 
 const BackToTopCom = ({ cls }) => {

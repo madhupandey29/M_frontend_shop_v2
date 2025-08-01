@@ -1,6 +1,6 @@
 'use client'
 import React from "react";
-import { Comment, Date, UserTwo } from "@/svg";
+import { Comment, Date, UserTwo } from '../../../svg';
 
 const PostboxDetailsTop = ({blog}) => {
   const {category,title,date,comments,author} = blog || {};

@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 // internal
-import { Close, Minus, Plus } from "@/svg";
-import { add_cart_product, quantityDecrement, remove_product } from "@/redux/features/cartSlice";
+import { Close, Minus, Plus } from '../../../svg';
+import { add_cart_product, quantityDecrement, remove_product } from "../../../redux/features/cartSlice";
 
 const CartItem = ({product}) => {
   const {_id, image, title, salesPrice, orderQuantity = 0 } = product || {};

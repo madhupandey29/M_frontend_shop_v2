@@ -1,6 +1,6 @@
 'use client';
 // internal
-import { Search } from "@/svg";
+import { Search } from '../../../svg';
 import NiceSelect from "@/ui/nice-select";
 import useSearchFormSubmit from "@/hooks/use-search-form-submit";
 

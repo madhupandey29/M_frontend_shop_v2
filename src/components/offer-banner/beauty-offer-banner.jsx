@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { useTimer } from 'react-timer-hook';
-import { ArrowRightSmTwo } from '@/svg';
+import { ArrowRightSmTwo } from '../../../svg';
 import collection_thumb from '@assets/img/product/collection/collection-1.jpg';
 import collection_thumb_2 from '@assets/img/product/collection/collection-2.jpg';
 import Link from 'next/link';

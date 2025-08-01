@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import NiceSelect from "@/ui/nice-select";
-import ErrorMsg from "@/components/common/error-msg";
+import ErrorMsg from '../../../components/common/error-msg';
 import SearchPrdLoader from "@/components/loader/search-prd-loader";
 import ProductItem from "@/components/products/fashion/product-item";
 import {
@@ -13,7 +13,7 @@ import {
   useGetQuantityUptoQuery,
   useGetPurchasePriceUptoQuery,
   useGetAllNewProductsQuery
-} from "@/redux/features/newProductApi";
+} from "../../../redux/features/newProductApi";
 
 export default function SearchArea() {
   const searchParams = useSearchParams();

@@ -1,7 +1,7 @@
-import user_1 from '@assets/img/users/user-1.jpg';
-import user_2 from '@assets/img/users/user-2.jpg';
-import user_3 from '@assets/img/users/user-3.jpg';
-import user_4 from '@assets/img/users/user-4.jpg';
+import user_1 from '../../public/assets/img/users/user-1.jpg';
+import user_2 from '../../public/assets/img/users/user-2.jpg';
+import user_3 from '../../public/assets/img/users/user-3.jpg';
+import user_4 from '../../public/assets/img/users/user-4.jpg';
 
 // fashion_testi_data
 export const fashion_testi_data = [

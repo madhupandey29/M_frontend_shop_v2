@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userLoggedOut } from "@/redux/features/auth/authSlice";
+import { userLoggedOut } from "../../../redux/features/auth/authSlice";
 
 // language
 /* function Language({active,handleActive}) {

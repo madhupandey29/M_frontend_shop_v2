@@ -1,11 +1,11 @@
 'use client';
 import React, { useRef, useEffect } from 'react';
-import { useGetStructureQuery } from '@/redux/features/structureApi';
-import { useGetContentByIdQuery } from '@/redux/features/contentApi';
-import { useGetFinishByIdQuery } from '@/redux/features/finishApi';
-import { useGetDesignByIdQuery } from '@/redux/features/designApi';
-import { useGetMotifSizeByIdQuery } from '@/redux/features/motifSizeApi';
-import { useGetSuitableForByIdQuery } from '@/redux/features/suitableForApi';
+import { useGetStructureQuery } from '../../redux/features/structureApi';
+import { useGetContentByIdQuery } from '../../redux/features/contentApi';
+import { useGetFinishByIdQuery } from '../../redux/features/finishApi';
+import { useGetDesignByIdQuery } from '../../redux/features/designApi';
+import { useGetMotifSizeByIdQuery } from '../../redux/features/motifSizeApi';
+import { useGetSuitableForByIdQuery } from '../../redux/features/suitableForApi';
 
 
 const DetailsTabNav = ({ product, seoData }) => {

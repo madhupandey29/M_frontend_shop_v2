@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import * as Yup from "yup";
 // internal
 import ErrorMsg from '../common/error-msg';
-import { EmailTwo, LocationTwo, PhoneThree, UserThree } from '@/svg';
+import { EmailTwo, LocationTwo, PhoneThree, UserThree } from '../../../svg';
 import { useUpdateProfileMutation } from '@/redux/features/auth/authApi';
 import { notifyError, notifySuccess } from '@/utils/toast';
 

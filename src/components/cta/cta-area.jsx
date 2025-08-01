@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 // internal
-import { AnimatedLine } from '@/svg';
+import { AnimatedLine } from '../../../svg';
 import shape_1 from '@assets/img/subscribe/subscribe-shape-1.png';
 import shape_2 from '@assets/img/subscribe/subscribe-shape-2.png';
 import shape_3 from '@assets/img/subscribe/subscribe-shape-3.png';

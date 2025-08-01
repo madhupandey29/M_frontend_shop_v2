@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { useRouter, } from 'next/navigation';
 import Link from 'next/link';
 // internal
-import { CloseEye, OpenEye } from '@/svg';
+import { CloseEye, OpenEye } from '../../../svg';
 import ErrorMsg from '../common/error-msg';
 import { useLoginUserMutation } from '@/redux/features/auth/authApi';
 import { notifyError, notifySuccess } from '@/utils/toast';

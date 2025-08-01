@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Tags } from "@/svg";
+import { Tags } from "../../../svg/";
 import Link from "next/link";
 
 const BlogItem = ({ blog }) => {

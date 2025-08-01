@@ -5,8 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 // internal
 import useCartInfo from "@/hooks/use-cart-info";
-import { CartTwo, Compare, Menu, User, Wishlist } from "@/svg";
-import { openCartMini } from "@/redux/features/cartSlice";
+import { CartTwo, Compare, Menu, User, Wishlist } from '../../../svg';
+import { openCartMini } from "../../../redux/features/cartSlice";
 
 const HeaderMainRight = ({ setIsCanvasOpen }) => {
   const { user: userInfo } = useSelector((state) => state.auth);

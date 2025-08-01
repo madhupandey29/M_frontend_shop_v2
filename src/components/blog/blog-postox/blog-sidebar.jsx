@@ -5,7 +5,7 @@ import Image from 'next/image';
 // internal
 import user from '@assets/img/users/user-11.jpg';
 import signature from '@assets/img/blog/signature/signature.png';
-import { Search } from '@/svg';
+import { Search } from '../../../svg';
 import blogData from '@/data/blog-data';
 
 // latest post

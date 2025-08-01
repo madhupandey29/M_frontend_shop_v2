@@ -1,11 +1,11 @@
 'use client';
 import React from 'react';
 // internal
-import { ShapeLineSm } from '@/svg';
+import { ShapeLineSm } from '../../../svg';
 import { useGetProductsByTypeQuery } from '@/redux/features/productApi';
-import ErrorMsg from '@/components/common/error-msg';
+import ErrorMsg from '../../../components/common/error-msg';
 import ProductSmItem from './product-sm-item';
-import HomeSmPrdLoader from '@/components/loader/home/home-sm-prd-loader';
+import HomeSmPrdLoader from '../../../components/loader'/home/home-sm-prd-loader';
 
 const ProductSmArea = () => {
   const { data: products, isError, isLoading, } = useGetProductsByTypeQuery({type:'electronics', query: ''});

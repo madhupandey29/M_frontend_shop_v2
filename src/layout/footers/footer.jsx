@@ -2,10 +2,10 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 // internal
-import logo from '@assets/img/logo/my_logo.png';
-import pay from '@assets/img/footer/footer-pay.png';
-import social_data from '@/data/social-data';
-import { Email, Location } from '@/svg';
+import logo from '../../../public/assets/img/logo/logo.svg';
+import pay from '../../../public/assets/img/footer/footer-pay.png';
+import social_data from '../../data/social-data';
+import { Email, Location } from '../../svg';
 
 const Footer = ({ style_2 = false, style_3 = false,primary_style=false }) => {
   return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useGetFilterOptionsQuery } from '@/redux/api/apiSlice';
+import { useGetFilterOptionsQuery } from '../../redux/api/apiSlice';
 
 const FILTERS = [
   { key: 'category', label: 'Category', api: 'category/' },

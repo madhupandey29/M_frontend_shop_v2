@@ -4,10 +4,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation,Pagination } from 'swiper/modules';
 // internal
 import { useGetProductsByTypeQuery } from '@/redux/features/productApi';
-import { NextArr, PrevArr, ShapeLine } from '@/svg';
-import ErrorMsg from '@/components/common/error-msg';
+import { NextArr, PrevArr, ShapeLine } from '../../../svg';
+import ErrorMsg from '../../../components/common/error-msg';
 import ProductItem from './product-item';
-import HomeNewArrivalPrdLoader from '@/components/loader/home/home-newArrival-prd-loader';
+import HomeNewArrivalPrdLoader from '../../../components/loader'/home/home-newArrival-prd-loader';
 
 // slider setting
 const slider_setting = {
