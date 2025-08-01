@@ -23,10 +23,6 @@ const ProductDetailsContent = ({ productItem }) => {
     skip: !_id,
   });
 
-  console.log('SEO Data from API:', seoData);
-  console.log('Product ID:', _id);
-  console.log('Is Loading:', isLoading);
-  console.log('Is Error:', isError);
 
   return (
     <section className="tp-product-details-area">

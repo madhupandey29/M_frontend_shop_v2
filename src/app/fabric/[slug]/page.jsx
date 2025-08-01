@@ -1,82 +1,94 @@
-"use client";
-import React from 'react';
-import ProductDetailsArea from '@/components/product-details/product-details-area';
-import { useGetSingleNewProductQuery } from '@/redux/features/newProductApi';
-import ErrorMsg from '@/components/common/error-msg';
-import ProductDetailsLoader from '@/components/loader/prd-details-loader';
-import { useParams } from 'next/navigation';
-import Wrapper from '@/layout/wrapper';
-import HeaderTwo from '@/layout/headers/header-2';
-import Footer from '@/layout/footers/footer';
+'use client';
+import React, { useState, useEffect } from "react";
+import DetailsThumbWrapper from "@components/product-details/details-thumb-wrapper";
+import DetailsWrapper from "@components/product-details/details-wrapper";
+import DetailsTabNav from "@components/product-details/details-tab-nav";
+import RelatedProducts from "@components/product-details/related-products";
+import { useGetSeoByProductQuery } from "@/redux/features/seoApi";
 
-// Mapping function (unchanged)
-function mapBackendProductToFrontend(product) {
-  const images = [
-    product.image && { img: product.image, type: "image" },
-    product.image1 && { img: product.image1, type: "image" },
-    product.image2 && { img: product.image2, type: "image" }
-  ].filter(Boolean);
+const ProductDetailsContent = ({ productItem }) => {
+  const { _id, img, imageURLs, videoId, status, groupcodeId } = productItem || {};
+  const [activeImg, setActiveImg] = useState(img);
+  // active image change when img change
+  useEffect(() => {
+    setActiveImg(img);
+  }, [img]);
 
-  // Use the common video thumbnail for all product videos
-  if (product.video && product.videoThumbnail) {
-    images.push({
-      img: product.videoThumbnail,
-      type: "video"
-    });
-  }
-
-  return {
-    _id: product._id,
-    title: product.name || product.title,
-    img: product.image || "",
-    imageURLs: images,
-    videoId: product.video || "",
-    price: product.salesPrice,
-    description: product.description,
-    status: product.status || 'in-stock',
-    sku: product.sku,
-    category: { name: product.newCategoryId?.name || 'Default Category' },
-    tags: product.tags || [],
-    offerDate: product.offerDate || { endDate: null },
-    additionalInformation: product.additionalInformation || [],
-    structureId: product.structureId?._id || product.structureId || "",
-    contentId: product.contentId?._id || product.contentId || "",
-    finishId: product.finishId?._id || product.finishId || "",
-    designId: product.designId?._id || product.designId || "",
-    colorId: product.colorId?._id || product.colorId || "",
-    motifsizeId: product.motifsizeId?._id || product.motifsizeId || "",
-    suitableforId: product.suitableforId?._id || product.suitableforId || "",
-    vendorId: product.vendorId?._id || product.vendorId || "",
-    groupcodeId: product.groupcodeId?._id || product.groupcodeId || "",
-    gsm: product.gsm,
-    oz: product.oz,
-    productIdentifier: product.productIdentifier,
-    width: product.cm ? `${product.cm} cm` : product.inch ? `${product.inch} inch` : 'N/A',
+  // handle image active
+  const handleImageActive = (item) => {
+    setActiveImg(item.img);
   };
-}
+  // Fetch SEO data for the product
+  const { data: seoData, isLoading, isError } = useGetSeoByProductQuery(_id, {
+    skip: !_id,
+  });
 
-export default function ProductDetailsPage() {
-  const params = useParams();
-  const slug = params.slug;
-  const { data: product, isError, isLoading } = useGetSingleNewProductQuery(slug, { skip: !slug });
-
-  let content = null;
-  if (isLoading) {
-    content = <ProductDetailsLoader loading={isLoading} />;
-  } else if (isError) {
-    content = <ErrorMsg msg="There was an error" />;
-  } else if (!product) {
-    content = <ErrorMsg msg="No product found!" />;
-  } else {
-    const mapped = mapBackendProductToFrontend(product.data);
-    content = <ProductDetailsArea product={mapped} />;
-  }
+  console.log('SEO Data from API:', seoData);
+  console.log('Product ID:', _id);
+  console.log('Is Loading:', isLoading);
+  console.log('Is Error:', isError);
 
   return (
-    <Wrapper>
-      <HeaderTwo style_2={true} />
-      {content}
-      <Footer primary_style={true} />
-    </Wrapper>
+    <section className="tp-product-details-area">
+      <div className="tp-product-details-top pb-115">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-7 col-lg-6">
+              {/* product-details-thumb-wrapper start */}
+              <DetailsThumbWrapper
+                activeImg={activeImg}
+                handleImageActive={handleImageActive}
+                imageURLs={imageURLs}
+                imgWidth={580}
+                imgHeight={670}
+                videoId={videoId}
+                status={status}
+              />
+              {/* product-details-thumb-wrapper end */}
+            </div>
+            <div className="col-xl-5 col-lg-6">
+              {/* product-details-wrapper start */}
+              <DetailsWrapper
+                productItem={productItem}
+                handleImageActive={handleImageActive}
+                activeImg={activeImg}
+                detailsBottom={true}
+              />
+              {/* product-details-wrapper end */}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* product details description */}
+      <div className="tp-product-details-bottom pb-140">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-12">
+              <DetailsTabNav product={productItem} seoData={seoData?.data} />
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* product details description */}
+
+      {/* related products start */}
+      <section className="tp-related-product pt-95 pb-50">
+        <div className="container">
+          <div className="row">
+            <div className="tp-section-title-wrapper-6 text-center mb-40">
+              <span className="tp-section-title-pre-6">Style it with</span>
+              <h3 className="tp-section-title-6">Mix & Match</h3>
+            </div>
+          </div>
+          <div className="row">
+            <RelatedProducts id={_id} groupcodeId={groupcodeId} />
+          </div>
+        </div>
+      </section>
+      {/* related products end */}
+    </section>
   );
-} 
+};
+
+export default ProductDetailsContent;
