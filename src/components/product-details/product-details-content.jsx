@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 import DetailsThumbWrapper from "./details-thumb-wrapper";
 import DetailsWrapper from "./details-wrapper";
-// const dispatch = useDispatch(); // Commented out because it is defined but never used
 import DetailsTabNav from "./details-tab-nav";
 import RelatedProducts from "./related-products";
+import { useGetSeoByProductQuery } from "@/redux/features/seoApi";
 
 const ProductDetailsContent = ({ productItem }) => {
   const { _id, img, imageURLs, videoId, status, groupcodeId } = productItem || {};
@@ -18,6 +18,16 @@ const ProductDetailsContent = ({ productItem }) => {
   const handleImageActive = (item) => {
     setActiveImg(item.img);
   };
+  // Fetch SEO data for the product
+  const { data: seoData, isLoading, isError } = useGetSeoByProductQuery(_id, {
+    skip: !_id,
+  });
+
+  console.log('SEO Data from API:', seoData);
+  console.log('Product ID:', _id);
+  console.log('Is Loading:', isLoading);
+  console.log('Is Error:', isError);
+
   return (
     <section className="tp-product-details-area">
       <div className="tp-product-details-top pb-115">
@@ -55,7 +65,7 @@ const ProductDetailsContent = ({ productItem }) => {
         <div className="container">
           <div className="row">
             <div className="col-xl-12">
-              <DetailsTabNav product={productItem} />
+              <DetailsTabNav product={productItem} seoData={seoData?.data} />
             </div>
           </div>
         </div>

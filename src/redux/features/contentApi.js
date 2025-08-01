@@ -4,7 +4,7 @@ export const contentApi = apiSlice.injectEndpoints({
   overrideExisting: true,
   endpoints: (builder) => ({
     getContentById: builder.query({
-      query: (id) => `/content/viewcontent/${id}`,
+      query: (id) => `/content/${id}`,
       providesTags: (result, error, id) => [{ type: "Content", id }],
     }),
   }),
