@@ -1,60 +1,94 @@
 import './globals.scss';
+import { Inter } from 'next/font/google';
 import Providers from '../components/provider';
 import GoogleAnalytics from '../components/analytics/GoogleAnalytics';
 import MicrosoftClarity from '../components/analytics/MicrosoftClarity';
-import metadata from './metadata';
 
-export { metadata };
+// Load Inter font with preload
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter'
+});
 
+export const metadata = {
+  title: {
+    default: 'Amrita Global Enterprises',
+    template: '%s | Amrita Global Enterprises',
+  },
+  description: 'Premium quality fabrics and textiles',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com'),
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
+  themeColor: '#ffffff',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Amrita Global Enterprises',
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-32x32.png',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com',
+    siteName: 'Amrita Global Enterprises',
+    title: 'Amrita Global Enterprises',
+    description: 'Premium quality fabrics and textiles',
+    images: [
+      {
+        url: '/images/logo/logo.png',
+        width: 800,
+        height: 600,
+        alt: 'Amrita Global Enterprises',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Amrita Global Enterprises',
+    description: 'Premium quality fabrics and textiles',
+    images: ['/images/logo/logo.png'],
+  },
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com',
+  },
+};
+
+// Add any additional head elements that need to be included in the document head
+const HeadElements = () => (
+  <>
+    {/* Preconnect to external domains */}
+    <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+    
+    {/* Font Awesome CSS */}
+    <link rel="stylesheet" href="/assets/css/font-awesome-pro.css" />
+    
+    {/* Google Site Verification */}
+    {process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && (
+      <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION} />
+    )}
+    
+    {/* Analytics Components */}
+    <GoogleAnalytics />
+    <MicrosoftClarity />
+  </>
+);
+
+// Main layout component
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
-        {/* Inline critical Font Awesome CSS for above-the-fold icons */}
-        <style>{`
-.fa { font-family: var(--fa-style-family, 'Font Awesome 6 Pro'); font-weight: var(--fa-style, 900); }
-.fa, .fa-brands, .fa-duotone, .fa-light, .fa-regular, .fa-solid, .fa-thin, .fab, .fad, .fal, .far, .fas, .fat {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  display: var(--fa-display, inline-block);
-  font-style: normal;
-  font-variant: normal;
-  line-height: 1;
-  text-rendering: auto;
-}
-`}</style>
-        {/* Preload critical CSS */}
-        <link rel="stylesheet" href="/assets/css/font-awesome-pro.css" />
-        {/* Preload only the most critical font */}
-        <link rel="preload" href="/assets/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        {/* Preload Jost variable fonts for faster text rendering */}
-        <link
-          rel="preload"
-          href="/assets/fonts/Jost/Jost-VariableFont_wght.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/assets/fonts/Jost/Jost-Italic-VariableFont_wght.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
-        {/* Preload all used Font Awesome weights */}
-        <link rel="preload" href="/assets/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/assets/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/assets/fonts/fa-light-300.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <GoogleAnalytics />
-        <MicrosoftClarity />
-        <meta
-          name="google-site-verification"
-          content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
-        />
+        <HeadElements />
       </head>
-      <body>
+      <body className={inter.className}>
         <Providers>
           {children}
         </Providers>
