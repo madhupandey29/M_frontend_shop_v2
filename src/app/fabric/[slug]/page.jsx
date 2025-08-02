@@ -1,0 +1,145 @@
+import React from 'react';
+import { notFound } from 'next/navigation';
+import { configureStore } from '@reduxjs/toolkit';
+import { newProductApi } from '@/redux/features/newProductApi';
+import { seoApi } from '@/redux/features/seoApi';
+import ProductDetailsArea from '@/components/product-details/product-details-area';
+import ErrorMsg from '@/components/common/error-msg';
+import ProductDetailsLoader from '@/components/loader/prd-details-loader';
+import Wrapper from '@/layout/wrapper';
+import HeaderTwo from '@/layout/headers/header-2';
+import Footer from '@/layout/footers/footer';
+
+// Create a new store instance for server-side usage
+const store = configureStore({
+  reducer: {
+    [newProductApi.reducerPath]: newProductApi.reducer,
+    [seoApi.reducerPath]: seoApi.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(newProductApi.middleware, seoApi.middleware),
+});
+
+// Enhanced mapping function to include all product data
+function mapBackendProductToFrontend(product) {
+  // Process all available images
+  const images = [
+    product.image && { img: product.image, type: "image" },
+    product.image1 && { img: product.image1, type: "image" },
+    product.image2 && { img: product.image2, type: "image" },
+    product.img && !product.image && { img: product.img, type: "image" } // Fallback to product.img if exists
+  ].filter(Boolean);
+
+  // Add video thumbnail if available
+  if (product.video && product.videoThumbnail) {
+    images.push({
+      img: product.videoThumbnail,
+      type: "video"
+    });
+  }
+
+  // Return complete product data including all SEO-relevant fields
+  return {
+    // Core product data
+    _id: product._id,
+    title: product.name || product.title,
+    name: product.name || product.title, // Ensure name is always available
+    img: product.image || product.img || "", // Handle both image and img fields
+    imageURLs: images,
+    videoId: product.video || "",
+    video: product.video, // Add raw video field
+    videoThumbnail: product.videoThumbnail, // Add video thumbnail
+    price: product.salesPrice || product.price, // Handle both salesPrice and price
+    description: product.description || product.productdescription || "", // Include productdescription
+    status: product.status || 'in-stock',
+    sku: product.sku || "",
+    
+    // Category and classification
+    category: product.category || { 
+      name: product.newCategoryId?.name || product.category?.name || 'Default Category',
+      _id: product.newCategoryId?._id || product.category?._id
+    },
+    tags: product.tags || [],
+    
+    // Product details
+    offerDate: product.offerDate || { endDate: null },
+    additionalInformation: product.additionalInformation || [],
+    
+    // Product relationships
+    structureId: product.structureId?._id || product.structureId || "",
+    contentId: product.contentId?._id || product.contentId || "",
+    finishId: product.finishId?._id || product.finishId || "",
+    designId: product.designId?._id || product.designId || "",
+    colorId: product.colorId?._id || product.colorId || "",
+    motifsizeId: product.motifsizeId?._id || product.motifsizeId || "",
+    suitableforId: product.suitableforId?._id || product.suitableforId || "",
+    vendorId: product.vendorId?._id || product.vendorId || "",
+    groupcodeId: product.groupcodeId?._id || product.groupcodeId || "",
+    
+    // Product specifications
+    gsm: product.gsm,
+    oz: product.oz,
+    cm: product.cm,
+    inch: product.inch,
+    productIdentifier: product.productIdentifier || "",
+    width: product.cm ? `${product.cm} cm` : product.inch ? `${product.inch} inch` : 'N/A',
+    
+    // Additional fields that might be useful for SEO
+    slug: product.slug || "",
+    createdAt: product.createdAt,
+    updatedAt: product.updatedAt,
+    
+    // Include the raw product data for reference
+    _raw: product
+  };
+}
+
+async function getProduct(slug) {
+  try {
+    const result = await store.dispatch(
+      newProductApi.endpoints.getSingleNewProduct.initiate(slug)
+    );
+
+    if (!result.data?.data) {
+      return { error: 'Product not found' };
+    }
+
+    // Get SEO data if needed
+    const product = result.data.data;
+    if (product._id) {
+      // Fetch SEO data in parallel if needed
+      await store.dispatch(
+        seoApi.endpoints.getSeoByProduct.initiate(product._id)
+      );
+    }
+
+    return { product };
+  } catch (error) {
+    console.error('Error fetching product:', error);
+    return { error: 'Failed to fetch product' };
+  } finally {
+    // Clean up the store
+    store.dispatch(newProductApi.util.resetApiState());
+    store.dispatch(seoApi.util.resetApiState());
+  }
+}
+
+export default async function ProductDetailsPage({ params }) {
+  const { slug } = params;
+  const { product, error } = await getProduct(slug);
+
+  if (error || !product) {
+    notFound();
+  }
+
+  const mapped = mapBackendProductToFrontend(product);
+  const content = <ProductDetailsArea product={mapped} />;
+
+  return (
+    <Wrapper>
+      <HeaderTwo style_2={true} />
+      {content}
+      <Footer primary_style={true} />
+    </Wrapper>
+  );
+} 
